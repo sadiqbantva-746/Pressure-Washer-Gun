@@ -893,6 +893,171 @@ footer{background:#17140f}
 #reviews .reviewsTickerTrack:hover{animation-play-state:paused !important;}
 </style>
 
+
+<style id="professional-product-layout">
+/* Professional product presentation */
+.hero{padding:34px 0 54px !important;background:linear-gradient(180deg,#f7f3eb 0%,#fbfaf7 100%) !important;}
+.heroSingle{
+  display:grid !important;
+  grid-template-columns:minmax(0,1.03fr) minmax(420px,.97fr) !important;
+  align-items:stretch !important;
+  gap:22px !important;
+}
+.heroProduct,.heroInfo{width:100% !important;margin:0 !important;box-sizing:border-box;}
+.heroProduct .productBox{
+  height:100%;padding:14px !important;border-radius:26px !important;
+  background:#fff !important;border:1px solid #e7dfd1 !important;
+  box-shadow:0 20px 55px rgba(43,35,24,.10) !important;
+}
+.heroProduct .mainImageWrap{min-height:560px !important;border-radius:20px !important;background:#f3eee5 !important;}
+.heroProduct .mainProductImage{height:560px !important;object-fit:contain !important;border-radius:18px !important;}
+.heroInfo{
+  display:flex !important;flex-direction:column !important;justify-content:center !important;
+  background:#fff !important;border:1px solid #e7dfd1 !important;border-radius:26px !important;
+  padding:38px 40px !important;box-shadow:0 20px 55px rgba(43,35,24,.10) !important;
+}
+.productIdentity{margin-bottom:10px !important;}
+.eyebrowSmall{color:#8c6d34 !important;letter-spacing:2px !important;font-weight:900 !important;font-size:11px !important;}
+.heroInfo h1{font-size:clamp(38px,4vw,58px) !important;letter-spacing:-2.5px !important;color:#17140f !important;line-height:1.02 !important;margin:8px 0 14px !important;}
+.heroInfo h1 span{color:#8c6d34 !important;}
+.heroInfo>p{color:#716b63 !important;line-height:1.7 !important;margin:0 !important;}
+.heroPrice strong{font-size:50px !important;color:#17140f !important;}
+.heroPrice .oldPrice{text-decoration:line-through !important;color:#9b9389 !important;}
+.heroPrice .save{background:#f4ead3 !important;color:#7b5d28 !important;border-color:#e7d5ae !important;}
+.heroFeature{background:#fbfaf7 !important;border:1px solid #e7dfd1 !important;border-radius:14px !important;}
+.heroFeature b{color:#17140f !important;}
+.heroFeature small{color:#716b63 !important;}
+.heroActions .btn.primary{background:#17140f !important;border-color:#17140f !important;color:#fff !important;box-shadow:0 12px 24px rgba(23,20,15,.16) !important;}
+.trustRow{color:#716b63 !important;}
+
+/* Professional checkout section */
+#order{padding-top:76px !important;padding-bottom:76px !important;background:#fff !important;}
+#order .order{
+  display:grid !important;grid-template-columns:minmax(0,.82fr) minmax(420px,1.18fr) !important;
+  gap:26px !important;align-items:stretch !important;
+}
+#order .orderInfo{
+  background:#17140f !important;color:#fff !important;border-radius:26px !important;
+  padding:42px !important;box-shadow:0 22px 55px rgba(23,20,15,.15) !important;
+  position:relative;overflow:hidden;
+}
+#order .orderInfo:after{content:"";position:absolute;right:-90px;bottom:-110px;width:280px;height:280px;border-radius:50%;background:rgba(178,138,67,.12);}
+#order .orderInfo h2{color:#fff !important;font-size:clamp(34px,4vw,48px) !important;line-height:1.05 !important;letter-spacing:-2px !important;position:relative;z-index:1;}
+#order .orderInfo p,#order .orderInfo li{color:#d9d1c5 !important;position:relative;z-index:1;}
+#order .orderInfo ul{position:relative;z-index:1;}
+#order .orderInfo .price{position:relative;z-index:1;border-top:1px solid rgba(255,255,255,.14);padding-top:22px;margin-top:24px;}
+#order .orderInfo .price strong{color:#fff !important;font-size:42px !important;}
+#order .orderInfo .price .old{color:#a9a095 !important;}
+#order .form{
+  background:#fff !important;border:1px solid #e7dfd1 !important;border-radius:26px !important;
+  padding:34px !important;box-shadow:0 20px 55px rgba(43,35,24,.10) !important;
+}
+#order .form h3{font-size:30px !important;color:#17140f !important;margin:0 0 8px !important;}
+#order .form:before{content:"SECURE CHECKOUT · CASH ON DELIVERY";display:block;color:#8c6d34;font-size:11px;font-weight:950;letter-spacing:1.7px;margin-bottom:10px;}
+#order .field{margin-bottom:14px !important;}
+#order .field label{color:#514b43 !important;font-size:11px !important;letter-spacing:.8px !important;}
+#order .field input,#order .field textarea{background:#fbfaf7 !important;border:1px solid #ddd4c6 !important;color:#17140f !important;border-radius:12px !important;padding:13px 14px !important;}
+#order .field input:focus,#order .field textarea:focus{border-color:#b28a43 !important;box-shadow:0 0 0 3px rgba(178,138,67,.12) !important;outline:none !important;}
+#order .btn.primary{background:#17140f !important;border-color:#17140f !important;color:#fff !important;border-radius:13px !important;height:52px !important;box-shadow:0 12px 25px rgba(23,20,15,.14) !important;}
+#order .note{color:#8a8177 !important;}
+
+@media(max-width:900px){
+  .heroSingle{grid-template-columns:1fr !important;}
+  .heroProduct .mainImageWrap{min-height:480px !important;}
+  .heroProduct .mainProductImage{height:480px !important;}
+  #order .order{grid-template-columns:1fr !important;}
+}
+@media(max-width:520px){
+  .hero{padding:20px 0 40px !important;}
+  .heroInfo{padding:27px 22px !important;}
+  .heroInfo h1{font-size:38px !important;}
+  .heroProduct .mainImageWrap{min-height:350px !important;}
+  .heroProduct .mainProductImage{height:350px !important;}
+  #order .orderInfo,#order .form{padding:26px 20px !important;}
+}
+</style>
+
+<style id="professional-hero-reading-order-final">
+/* Mobile/tablet reading order only. Desktop layout remains unchanged. */
+@media(max-width:900px){
+  .heroSingle{
+    display:flex !important;
+    flex-direction:column !important;
+    gap:0 !important;
+    align-items:stretch !important;
+  }
+  .heroProduct,.heroInfo{
+    display:contents !important;
+  }
+  .heroSingle > .heroInfo > .breadcrumb{order:1 !important;}
+  .heroSingle > .heroInfo > .heroBadges{order:2 !important;}
+  .heroSingle > .heroProduct > .productBox{order:3 !important;}
+  .heroSingle > .heroProduct > .productCaption{order:4 !important;}
+  .heroSingle > .heroInfo > .productIdentity{order:5 !important;}
+  .heroSingle > .heroInfo > .heroPrice{order:6 !important;}
+  .heroSingle > .heroInfo > .heroActions{order:7 !important;}
+  .heroSingle > .heroInfo > p{order:8 !important;}
+  .heroSingle > .heroInfo > .rating{order:9 !important;}
+  .heroSingle > .heroInfo > .deliveryLine{order:10 !important;}
+  .heroSingle > .heroInfo > .freeLine{order:11 !important;}
+  .heroSingle > .heroInfo > .heroFeatures{order:12 !important;}
+  .heroSingle > .heroInfo > .trustRow{order:13 !important;}
+
+  .heroSingle > .heroInfo > .breadcrumb,
+  .heroSingle > .heroInfo > .heroBadges,
+  .heroSingle > .heroProduct > .productBox,
+  .heroSingle > .heroProduct > .productCaption,
+  .heroSingle > .heroInfo > .productIdentity,
+  .heroSingle > .heroInfo > p,
+  .heroSingle > .heroInfo > .rating,
+  .heroSingle > .heroInfo > .heroPrice,
+  .heroSingle > .heroInfo > .deliveryLine,
+  .heroSingle > .heroInfo > .freeLine,
+  .heroSingle > .heroInfo > .heroActions,
+  .heroSingle > .heroInfo > .heroFeatures,
+  .heroSingle > .heroInfo > .trustRow{
+    width:min(920px,100%);
+    margin-left:auto !important;
+    margin-right:auto !important;
+    box-sizing:border-box;
+  }
+  .heroSingle > .heroInfo > .breadcrumb{margin-top:0 !important;margin-bottom:10px !important;}
+  .heroSingle > .heroInfo > .heroBadges{margin-bottom:16px !important;}
+  .heroSingle > .heroProduct > .productBox{margin-top:0 !important;margin-bottom:18px !important;}
+  .heroSingle > .heroProduct > .productCaption{margin-bottom:18px !important;}
+  .heroSingle > .heroInfo > .productIdentity{margin-bottom:8px !important;}
+  .heroSingle > .heroInfo > .heroPrice{margin-top:14px !important;}
+  .heroSingle > .heroInfo > .heroActions{margin-top:10px !important;}
+  .heroSingle > .heroInfo > .heroFeatures{margin-top:20px !important;}
+  .heroSingle > .heroInfo > .trustRow{margin-top:11px !important;}
+  .heroSingle > .heroProduct > .productBox{
+    background:#fff;
+    border:1px solid #e1e8eb;
+    box-shadow:0 20px 60px rgba(7,24,39,.10);
+  }
+  .heroSingle > .heroInfo > .productIdentity h1{
+    font-size:clamp(38px,5vw,60px);
+    margin-bottom:10px;
+  }
+  .heroSingle > .heroInfo > .heroActions .btn{min-height:58px;}
+}
+@media(max-width:520px){
+  .heroSingle > .heroInfo > .breadcrumb,
+  .heroSingle > .heroInfo > .heroBadges,
+  .heroSingle > .heroProduct > .productBox,
+  .heroSingle > .heroProduct > .productCaption,
+  .heroSingle > .heroInfo > .productIdentity,
+  .heroSingle > .heroInfo > p,
+  .heroSingle > .heroInfo > .rating,
+  .heroSingle > .heroInfo > .heroPrice,
+  .heroSingle > .heroInfo > .deliveryLine,
+  .heroSingle > .heroInfo > .freeLine,
+  .heroSingle > .heroInfo > .heroActions,
+  .heroSingle > .heroInfo > .heroFeatures,
+  .heroSingle > .heroInfo > .trustRow{width:100%;}
+  .heroSingle > .heroInfo > .productIdentity h1{font-size:38px;}
+}
+</style>
 </head>
 <body>
 <div class="top">🔥 TODAY ONLY · <b>Cash on Delivery Available Across Pakistan</b> · Complete 48V Cleaning Kit</div>
