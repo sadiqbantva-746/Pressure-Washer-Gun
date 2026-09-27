@@ -1455,7 +1455,9 @@ function changeProductImage(direction){
   setProductImage(currentProductImage + direction);
 }
 
-function submitOrder(e){
+const GOOGLE_SHEET_API = "https://script.google.com/macros/s/AKfycbyepfILBlpm4Hkm7ReSTLgmkr2T97XhLKlsyq4g_o8uC9_4LjCWBxRFocgodqL0WfMY/exec";
+
+async function submitOrder(e){
   e.preventDefault();
   const prefix=e.target.closest('.modalCard') ? 'm_' : '';
   const name=document.getElementById(prefix+'name').value.trim();
@@ -1469,9 +1471,32 @@ function submitOrder(e){
     return;
   }
 
+  const orderData={
+    name,
+    mobile: phone,
+    phone,
+    city,
+    address,
+    nearestPlace: nearest,
+    product: '48V Cordless Pressure Washer',
+    price: '4500'
+  };
+
   const overlay=document.getElementById('processingOverlay');
   overlay.classList.add('show');
   document.body.style.overflow='hidden';
+
+  try {
+    // text/plain keeps the request simple so Google Apps Script can receive it without a CORS preflight.
+    await fetch(GOOGLE_SHEET_API, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: {'Content-Type':'text/plain;charset=UTF-8'},
+      body: JSON.stringify(orderData)
+    });
+  } catch(err) {
+    console.warn('Google Sheet submission warning:', err);
+  }
 
   setTimeout(()=>{
     overlay.classList.remove('show');
