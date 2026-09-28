@@ -1058,6 +1058,25 @@ footer{background:#17140f}
   .heroSingle > .heroInfo > .productIdentity h1{font-size:38px;}
 }
 </style>
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '4139043609560645');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=4139043609560645&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
 </head>
 <body>
 <div class="top">🔥 TODAY ONLY · <b>Cash on Delivery Available Across Pakistan</b> · Complete 48V Cleaning Kit</div>
@@ -1486,18 +1505,16 @@ async function submitOrder(e){
   overlay.classList.add('show');
   document.body.style.overflow='hidden';
 
-  try {
-    // text/plain keeps the request simple so Google Apps Script can receive it without a CORS preflight.
-    await fetch(GOOGLE_SHEET_API, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: {'Content-Type':'text/plain;charset=UTF-8'},
-      body: JSON.stringify(orderData)
-    });
-  } catch(err) {
-    console.warn('Google Sheet submission warning:', err);
-  }
+  // Send to Google Sheets in the background. Do not wait for the network response.
+  fetch(GOOGLE_SHEET_API, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: {'Content-Type':'text/plain;charset=UTF-8'},
+    body: JSON.stringify(orderData),
+    keepalive: true
+  }).catch(err => console.warn('Google Sheet submission warning:', err));
 
+  // Show Thank You exactly 1 second after the customer submits.
   setTimeout(()=>{
     overlay.classList.remove('show');
     document.body.style.overflow='';
@@ -1511,6 +1528,15 @@ function generateOrderNumber(){
 }
 
 function showThankYou(order){
+  // Meta Pixel: count a completed purchase when the Thank You page is shown.
+  // The event fires once per successful order flow.
+  if (typeof fbq === 'function' && !window.__purchaseTracked) {
+    window.__purchaseTracked = true;
+    fbq('track', 'Purchase', {
+      value: 4500,
+      currency: 'PKR'
+    });
+  }
   const orderNumber = generateOrderNumber();
   const delivery = 0;
   const productTotal = 4500;
