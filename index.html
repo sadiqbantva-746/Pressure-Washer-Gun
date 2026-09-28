@@ -1367,7 +1367,7 @@ footer{background:#17140f}
   <div class="processingCard">
     <div class="processingSpinner"></div>
     <h2>Processing Your Order</h2>
-    <p>Please wait while we confirm your order details...</p>
+    <p>Please wait 1 second while we confirm your order...</p>
     <div class="processingProduct">48V CORDLESS PRESSURE WASHER · COD</div>
   </div>
 </div>
@@ -1502,7 +1502,7 @@ async function submitOrder(e){
     overlay.classList.remove('show');
     document.body.style.overflow='';
     showThankYou({name, phone, city, address, nearest});
-  },2000);
+  },1000);
 }
 
 function generateOrderNumber(){
@@ -1512,9 +1512,9 @@ function generateOrderNumber(){
 
 function showThankYou(order){
   const orderNumber = generateOrderNumber();
-  const delivery = 250;
+  const delivery = 0;
   const productTotal = 4500;
-  const grandTotal = productTotal + delivery;
+  const grandTotal = productTotal;
 
   document.body.innerHTML = `
     <div class="thankPage">
@@ -1539,11 +1539,11 @@ function showThankYou(order){
           <div class="detailRow"><span>Product</span><strong>48V Cordless Pressure Washer</strong></div>
           <div class="detailRow"><span>Quantity</span><strong>1</strong></div>
           <div class="detailRow"><span>Product Total</span><strong>Rs. ${productTotal.toLocaleString()}</strong></div>
-          <div class="detailRow"><span>Delivery</span><strong>Rs. ${delivery.toLocaleString()}</strong></div>
+          <div class="detailRow"><span>Delivery</span><strong>FREE</strong></div>
           <div class="detailRow grand"><span>Grand Total</span><strong>Rs. ${grandTotal.toLocaleString()}</strong></div>
         </div>
 
-        <div class="paymentLine">Payment Method: <strong>Cash on Delivery</strong></div>
+        <div class="paymentLine">Payment Method: <strong>Cash on Delivery</strong> · Delivery: <strong>FREE</strong></div>
         <button class="continueBtn" onclick="location.reload();">← Continue Shopping</button>
       </div>
     </div>
